@@ -72,7 +72,7 @@ curl \
 
 -> **Note**: Uploading a configuration file automatically creates a run and associates it with this configuration-version. Therefore it is unnecessary to [create a run on the workspace](./run.html#create-a-run) if a new file is uploaded.
 
-`POST https://archivist.terraform.io.terraform.io/v1/object/4c44d964-eba7-4dd5-ad29-1ece7b99e8da`
+`POST https://archivist.terraform.io/v1/object/4c44d964-eba7-4dd5-ad29-1ece7b99e8da`
 
 **The URL is provided in the `upload-url` attribute in the `configuration-versions` resource.**
 
@@ -92,7 +92,7 @@ Properties without a default value are required.
 curl \
   --request PUT \
   -F 'data=@config.tar.gz' \
-  https://archivist.terraform.io.terraform.io/v1/object/4c44d964-eba7-4dd5-ad29-1ece7b99e8da
+  https://archivist.terraform.io/v1/object/4c44d964-eba7-4dd5-ad29-1ece7b99e8da
 ```
 
 ## List Configuration Versions
@@ -126,7 +126,7 @@ curl \
         "source": "github",
         "status": "pending",
         "status-timestamps": {},
-        "upload-url": "https://archivist.terraform.io.terraform.io/v1/object/91f9aea4-749f-4415-aa54-f76bad6250dd"
+        "upload-url": "https://archivist.terraform.io/v1/object/91f9aea4-749f-4415-aa54-f76bad6250dd"
       },
       "relationships": {
         "ingress-attributes": {
