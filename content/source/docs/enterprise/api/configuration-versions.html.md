@@ -48,6 +48,7 @@ curl \
     "type": "configuration-versions",
     "attributes": {
       "error": null,
+      "error-message":null,
       "source": "tfe-api",
       "status": "pending",
       "status-timestamps": {},
@@ -121,6 +122,7 @@ curl \
       "type": "configuration-versions",
       "attributes": {
         "error": null,
+        "error-message":null,
         "source": "github",
         "status": "pending",
         "status-timestamps": {},
@@ -167,6 +169,7 @@ curl \
     "type": "configuration-versions",
     "attributes": {
       "error": null,
+      "error-message":null,
       "source": "github",
       "status": "pending",
       "status-timestamps": {},
