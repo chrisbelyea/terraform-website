@@ -10,6 +10,62 @@ sidebar_current: "docs-enterprise2-api-teams"
 
 The Teams API is used to create and destroy teams. The [Team Membership API](./team-members.html) is used to add or remove users from a team. To give a team access to a workspace use the [Team Access API](./team-access.html) to associate a team with privileges on a workspace.
 
+## List all teams
+
+`GET organizations/:organization_name/teams`
+
+Parameter            | Description
+---------------------|------------
+`:organization_name` | The name of the organization to create the team in. The organization must already exist in the system, and the user must have permissions to create new teams.
+
+### Sample Request
+
+```shell
+$ curl \
+  --header "Authorization: Bearer $ATLAS_TOKEN" \
+  --header "Content-Type: application/vnd.api+json" \
+  --request GET \
+  https://app.terraform.io/api/v2/organizations/my-organization/teams
+```
+
+
+### Sample Response
+
+```json
+{
+    "data": [
+        {
+            "id": "257529",
+            "type": "teams",
+            "attributes": {
+                "name": "owners",
+                "users-count": 1,
+                "permissions": {
+                    "can-update-membership": false,
+                    "can-destroy": false
+                }
+            },
+            "relationships": {
+                "users": {
+                    "data": [
+                        {
+                            "id": "hashibot",
+                            "type": "users"
+                        }
+                    ]
+                },
+                "authentication-token": {
+                    "meta": {}
+                }
+            },
+            "links": {
+                "self": "/api/v2/teams/team-n8UQ6wfhyym25sMe"
+            }
+        }
+    ]
+}
+```
+
 ## Create a Team
 
 `POST /organizations/:organization_name/teams`
@@ -75,8 +131,59 @@ $ curl \
 }
 ```
 
+## Show Team Information
 
-# Delete a Team
+`GET /teams/:team_id`
+
+Parameter   | Description
+------------|------------
+`:team_id`  | The team ID to be shown.
+
+### Sample Request
+
+```shell
+$ curl \
+  --header "Authorization: Bearer $ATLAS_TOKEN" \
+  --header "Content-Type: application/vnd.api+json" \
+  --request GET \
+  https://app.terraform.io/api/v2/teams/257529
+```
+
+### Sample Response
+```json
+{
+    "data": {
+        "id": "257529",
+        "type": "teams",
+        "attributes": {
+            "name": "owners",
+            "users-count": 1,
+            "permissions": {
+                "can-update-membership": false,
+                "can-destroy": false
+            }
+        },
+        "relationships": {
+            "users": {
+                "data": [
+                    {
+                        "id": "hashibot",
+                        "type": "users"
+                    }
+                ]
+            },
+            "authentication-token": {
+                "meta": {}
+            }
+        },
+        "links": {
+            "self": "/api/v2/teams/257529"
+        }
+    }
+  }
+```
+
+## Delete a Team
 
 `DELETE /teams/:team_id`
 
@@ -94,3 +201,7 @@ $ curl \
   --request DELETE \
   https://app.terraform.io/api/v2/teams/257529
 ```
+
+## Available Related Resources
+
+- `users` (`string`) - Returns the full user record for every member of a team.
