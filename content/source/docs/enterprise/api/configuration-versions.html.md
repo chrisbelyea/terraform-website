@@ -51,7 +51,7 @@ curl \
       "source": "tfe-api",
       "status": "pending",
       "status-timestamps": {},
-      "upload-url": "https://ARCHIVIST/v1/object/9224c6b3-2e14-4cd7-adff-ed484d7294c2"
+      "upload-url": "https://archivist.terraform.io/v1/object/9224c6b3-2e14-4cd7-adff-ed484d7294c2"
     },
     "relationships": {
       "ingress-attributes": {
@@ -71,7 +71,7 @@ curl \
 
 -> **Note**: Uploading a configuration file automatically creates a run and associates it with this configuration-version. Therefore it is unnecessary to [create a run on the workspace](./run.html#create-a-run) if a new file is uploaded.
 
-`POST https://ARCHIVIST/v1/object/4c44d964-eba7-4dd5-ad29-1ece7b99e8da`
+`POST https://archivist.terraform.io.terraform.io/v1/object/4c44d964-eba7-4dd5-ad29-1ece7b99e8da`
 
 **The URL is provided in the `upload-url` attribute in the `configuration-versions` resource.**
 
@@ -91,7 +91,7 @@ Properties without a default value are required.
 curl \
   --request PUT \
   -F 'data=@config.tar.gz' \
-  https://ARCHIVIST/v1/object/4c44d964-eba7-4dd5-ad29-1ece7b99e8da
+  https://archivist.terraform.io.terraform.io/v1/object/4c44d964-eba7-4dd5-ad29-1ece7b99e8da
 ```
 
 ## List Configuration Versions
@@ -124,7 +124,7 @@ curl \
         "source": "github",
         "status": "pending",
         "status-timestamps": {},
-        "upload-url": "https://ARCHIVIST/v1/object/91f9aea4-749f-4415-aa54-f76bad6250dd"
+        "upload-url": "https://archivist.terraform.io.terraform.io/v1/object/91f9aea4-749f-4415-aa54-f76bad6250dd"
       },
       "relationships": {
         "ingress-attributes": {
@@ -170,7 +170,7 @@ curl \
       "source": "github",
       "status": "pending",
       "status-timestamps": {},
-      "upload-url": "http://ARCHIVIST/v1/object/5338a80d-51b2-4122-adad-5b63553f68b1"
+      "upload-url": "http://archivist.terraform.io/v1/object/5338a80d-51b2-4122-adad-5b63553f68b1"
     },
     "relationships": {
       "ingress-attributes": {
