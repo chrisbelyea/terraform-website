@@ -268,3 +268,11 @@ curl \
   --data @payload.json \
   https://app.terraform.io/api/v2/runs/run-DQGdmrWMX8z9yWQB/actions/discard
 ```
+
+## Available Related Resources
+
+- `plan` - Additional information about plans events.
+- `apply` - Additional information about apply events.
+- `created_by` - Full user records of the users responsible for creating the runs.
+- `configuration_version` - The configuration record used in the run.
+- `configuration_version.ingress_attributes` - The commit information used in the run.
