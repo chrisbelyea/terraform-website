@@ -107,3 +107,56 @@ Although most of our API endpoints use the POST method and receive their paramet
 Since these parameters were originally designed as part of a JSON object, they sometimes have characters that must be [percent-encoded](https://en.wikipedia.org/wiki/Percent-encoding) in a query parameter. For example, `[` becomes `%5B` and `]` becomes `%5D`.
 
 For more about URI structure and query strings, see [the specification (RFC 3986)](https://tools.ietf.org/html/rfc3986) or [the Wikipedia page on URIs](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier).
+
+### Inclusion of Related Resources
+
+Some of our GET endpoints have the ability to return additional information about nested resources by adding an `?include` parameter to the query.
+
+The related resource options are listed in each endpoint's documentation where available. Requests may include one or many related resources as a comma separated parameter.
+
+The related resources will appear in an `included` section of the response.
+
+Example:
+
+```shell
+$ curl \
+  --header "Authorization: Bearer $ATLAS_TOKEN" \
+  --header "Content-Type: application/vnd.api+json" \
+  --request GET \
+  https://app.terraform.io/api/v2/teams/team-n8UQ6wfhyym25sMe?include=users
+```
+
+```json
+{
+    "data": {
+        "id": "team-n8UQ6wfhyym25sMe",
+        "type": "teams",
+        "attributes": {
+            "name": "owners",
+            "users-count": 1
+            ...
+        },
+        "relationships": {
+            "users": {
+                "data": [
+                    {
+                        "id": "hashibot",
+                        "type": "users"
+                    }
+                ]
+            } ...
+        }
+        ...
+    },
+    "included": [
+        {
+            "id": "hashibot",
+            "type": "users",
+            "attributes": {
+                "username": "hashibot"
+                ...
+            } ...
+        }
+    ]
+}
+```
